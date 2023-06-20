@@ -32,11 +32,11 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
+        binding.signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_FirstFragment_to_LogIn);
             }
         });
         binding.close.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +45,11 @@ public class FirstFragment extends Fragment {
                 requireActivity().finishAffinity();
             }
         });
-        binding.tasks.setOnClickListener(new View.OnClickListener() {
+        binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_MainMenu);
+                        .navigate(R.id.action_FirstFragment_to_SignUp);
             }
         });
 

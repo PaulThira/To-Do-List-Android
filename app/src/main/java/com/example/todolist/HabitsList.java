@@ -2,22 +2,25 @@ package com.example.todolist;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.todolist.databinding.FragmentSignUpBinding;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SignUp#newInstance} factory method to
+ * Use the {@link HabitsList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignUp extends Fragment {
+public class HabitsList extends Fragment {
+    private RecyclerView recyclerView;
+    private HabitAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,9 +30,8 @@ public class SignUp extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private FragmentSignUpBinding binding;
 
-    public SignUp() {
+    public HabitsList() {
         // Required empty public constructor
     }
 
@@ -39,11 +41,11 @@ public class SignUp extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SignUp.
+     * @return A new instance of fragment HabitsList.
      */
     // TODO: Rename and change types and number of parameters
-    public static SignUp newInstance(String param1, String param2) {
-        SignUp fragment = new SignUp();
+    public static HabitsList newInstance(String param1, String param2) {
+        HabitsList fragment = new HabitsList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,17 +66,27 @@ public class SignUp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentSignUpBinding.inflate(inflater, container, false);
-        return binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_habits_list, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        List<String> dates = new ArrayList<String>();
+        List<String> items=new ArrayList<String>();
+        List<Boolean> doneItems=new ArrayList<Boolean>();
+        dates.add("01/02/02");
+        dates.add("03/08/21");
+        dates.add("05/12/22");
+        items.add("Item 1");
+        items.add("Item 2");
+        items.add("Item 3");
+        doneItems.add(true);
+        doneItems.add(false);
+        doneItems.add(true);
+
+        adapter = new HabitAdapter(items,dates,doneItems);
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binding.signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SignUp.this)
-                        .navigate(R.id.action_SignUp_to_MainMenu);
-            }
-        });
-}}
+}

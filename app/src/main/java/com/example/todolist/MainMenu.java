@@ -2,11 +2,16 @@ package com.example.todolist;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.todolist.databinding.FragmentFirstBinding;
+import com.example.todolist.databinding.FragmentMainMenuBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class MainMenu extends Fragment {
+    private FragmentMainMenuBinding binding;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +66,16 @@ public class MainMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        binding = FragmentMainMenuBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
-}
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.habits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainMenu.this)
+                        .navigate(R.id.action_MainMenu_to_Habits);
+            }
+        });
+}}

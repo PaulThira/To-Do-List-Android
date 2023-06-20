@@ -8,22 +8,36 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="132dp"
-        android:layout_height="72dp"
+        android:id="@+id/dates"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="419dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="65dp"
+        android:rotationX="0"
+        android:text="Dates" />
+
+    <Button
+        android:id="@+id/tasks"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="65dp"
         android:rotationX="0"
         android:text="Tasks" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="122dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="600dp"
+        android:id="@+id/habits"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="147dp"
         android:layout_marginBottom="90dp"
         android:text="Habits" />

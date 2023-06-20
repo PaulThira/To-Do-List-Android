@@ -11,28 +11,51 @@
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_MainMenu"
-            app:destination="@id/MainMenu" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.todolist.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_FirstFragment_to_SignUp"
+            app:destination="@id/SignUp" />
+        <action
+            android:id="@+id/action_FirstFragment_to_LogIn"
+            app:destination="@id/LogIn" />
     </fragment>
     <fragment
         android:id="@+id/MainMenu"
         android:name="com.example.todolist.MainMenu"
         android:label="Main Menu"
         tools:layout="@layout/fragment_main_menu">
+
+
+        <action
+            android:id="@+id/action_MainMenu_to_Habits"
+            app:destination="@id/Habits" />
+    </fragment>
+    <fragment
+        android:id="@+id/LogIn"
+        android:name="com.example.todolist.LogIn"
+        android:label="LogIn"
+        tools:layout="@layout/fragment_log_in">
+        <action
+            android:id="@+id/action_LogIn_to_MainMenu"
+            app:destination="@id/MainMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/SignUp"
+        android:name="com.example.todolist.SignUp"
+        android:label="SignUp"
+        tools:layout="@layout/fragment_sign_up">
+
+
+        <action
+            android:id="@+id/action_SignUp_to_MainMenu"
+            app:destination="@id/MainMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/Habits"
+        android:name="com.example.todolist.HabitsList"
+        android:label="HabitList"
+        tools:layout="@layout/fragment_habits_list">
+
 
 
     </fragment>
