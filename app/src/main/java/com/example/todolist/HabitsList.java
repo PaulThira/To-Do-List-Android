@@ -75,14 +75,23 @@ public class HabitsList extends Fragment {
         List<String> items=new ArrayList<String>();
         List<Boolean> doneItems=new ArrayList<Boolean>();
         dates.add("01/02/02");
+        System.out.println("item added");
         dates.add("03/08/21");
+        System.out.println("item added");
         dates.add("05/12/22");
+        System.out.println("item added");
         items.add("Item 1");
+        System.out.println("item added");
         items.add("Item 2");
+        System.out.println("item added");
         items.add("Item 3");
+        System.out.println("item added");
         doneItems.add(true);
+        System.out.println("item added");
         doneItems.add(false);
+        System.out.println("item added");
         doneItems.add(true);
+        System.out.println("item added");
 
         adapter = new HabitAdapter(items,dates,doneItems);
         recyclerView.setAdapter(adapter);
