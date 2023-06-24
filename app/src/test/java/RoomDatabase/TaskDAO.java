@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface TaskDAO {
     @Insert
-    public void insert(Habit habit);
+    public void insert(Task task);
     @Update
-    public void update(Habit habit);
+    public void update(Task task);
     @Delete
-    public void delete(Habit habit);
-    @Query("Select * from habits")
-    public List<Habit> getAllHabits();
+    public void delete(Task task);
+    @Query("Select * from tasks")
+    public List<Task> getAllTasks();
 }

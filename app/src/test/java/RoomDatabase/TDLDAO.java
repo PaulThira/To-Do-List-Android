@@ -15,6 +15,6 @@ public interface TDLDAO
     public void delete(TDL tdl);
     @Update
     public void update(TDL tdl);
-    @Query("Select* from tdls")
+    @Query("Select* from tdl")
     public List<User> getTDLs();
 }

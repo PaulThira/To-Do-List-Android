@@ -15,5 +15,5 @@ public interface HabitTrackerDAO {
     @Update
     public void update(HabitTracker habitTracker);
     @Query("Select* from `habit tracker`")
-    public List<User> getHabitTrackers();
+    public List<HabitTracker> getHabitTrackers();
 }
