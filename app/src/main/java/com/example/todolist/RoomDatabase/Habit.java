@@ -1,4 +1,4 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "habits",
         foreignKeys = @ForeignKey(entity = HabitTracker.class,
         parentColumns = "id",
-        childColumns = "idHabitTracker"
+        childColumns = "IdHabitTracker"
         )
 )
 public class Habit {
@@ -17,11 +17,11 @@ public class Habit {
     @ColumnInfo(name = "streak")
     public int streak;
     @ColumnInfo(name="IdHabitTracker")
-    public int idHabitTracker;
+    public int IdHabitTracker;
     public Habit(){
         id=1;
         name="drinking";
         streak=0;
-        idHabitTracker=1;
+        IdHabitTracker=1;
     }
 }

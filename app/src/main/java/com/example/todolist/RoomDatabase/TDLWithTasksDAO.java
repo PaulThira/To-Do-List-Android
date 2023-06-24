@@ -1,7 +1,6 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 
 import androidx.room.Dao;
-import androidx.room.Entity;
 import androidx.room.Query;
 import androidx.room.Transaction;
 

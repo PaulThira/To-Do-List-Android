@@ -1,4 +1,4 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 
 import androidx.room.Dao;
 import androidx.room.Query;
@@ -6,8 +6,8 @@ import androidx.room.Transaction;
 
 import java.util.List;
 @Dao
-public interface UserWithHabitTrackersDAO {
+public interface UserWithTDLsDAO {
     @Transaction
     @Query("SELECT * FROM users")
-    List<UserWithHabitTrackers> getDepartmentsWithEmployees();
+    List<UserWithTDLs> getUsersWithTDLs();
 }

@@ -1,14 +1,14 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
 import java.util.List;
 
-public class UserWithHabitTrackers {
+public class UserWithTDLs {
     @Embedded
-    public User users;
+    public User user;
 
     @Relation(parentColumn = "id", entityColumn = "idUser")
-    public List<HabitTracker> habitTrackerList;
+    public List<TDL> tdlList;
 }

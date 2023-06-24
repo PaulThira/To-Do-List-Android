@@ -4,15 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.todolist.databinding.FragmentFirstBinding;
+import com.example.todolist.RoomDatabase.UserDAO;
 import com.example.todolist.databinding.FragmentLogInBinding;
+import com.example.todolist.RoomDatabase.DataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +29,8 @@ public class LogIn extends Fragment {
     private String mParam1;
     private String mParam2;
     private FragmentLogInBinding binding;
+    private DataBase Db;
+    private UserDAO userDao;
 
     public LogIn() {
         // Required empty public constructor
@@ -76,8 +77,10 @@ public class LogIn extends Fragment {
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 NavHostFragment.findNavController(LogIn.this)
                         .navigate(R.id.action_LogIn_to_MainMenu);
+
             }
         });
 

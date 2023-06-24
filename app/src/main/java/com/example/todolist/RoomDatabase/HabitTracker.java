@@ -1,28 +1,23 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity(tableName = "TDL",foreignKeys = @ForeignKey(entity = User.class,
+@Entity(tableName = "habit tracker",foreignKeys = @ForeignKey(entity = User.class,
         parentColumns = "id",
-        childColumns = "idUser",
-        onDelete = ForeignKey.CASCADE))
-public class TDL {
-
+        childColumns = "idUser"
+      ))
+public class HabitTracker {
     @PrimaryKey
     public int id;
-    @ColumnInfo(name="name")
+    @ColumnInfo(name=" tracker name")
     public String name;
     @ColumnInfo(name = "idUser")
     public int idUser;
-
-    public TDL(){
+    public HabitTracker(){
         id=1;
-        name="things";
+        name="tracker";
         idUser=1;
 
     }

@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_SignUp_to_MainMenu"
             app:destination="@id/MainMenu" />
+        <action
+            android:id="@+id/action_SignUp_self"
+            app:destination="@id/SignUp" />
     </fragment>
     <fragment
         android:id="@+id/Habits"

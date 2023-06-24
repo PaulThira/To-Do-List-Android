@@ -1,12 +1,13 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
+@Dao
 public interface HabitTrackerDAO {
     @Insert
     public void insert(HabitTracker habitTracker);

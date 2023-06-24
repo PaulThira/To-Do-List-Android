@@ -1,11 +1,9 @@
-package RoomDatabase;
+package com.example.todolist.RoomDatabase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import java.util.Date;
 
 @Entity(tableName = "tasks", foreignKeys = @ForeignKey(entity = TDL.class,
         parentColumns = "id",
@@ -19,14 +17,14 @@ public class Task {
     @ColumnInfo(name="status")
     public boolean status;
     @ColumnInfo(name="dueDate")
-    public Date dueDate;
+    public String dueDate;
     @ColumnInfo(name="idTDL")
     public int idTDL;
     public Task(){
         id=1;
         name="item";
         status=true;
-        dueDate= new Date();
+        dueDate="10/12/2023";
         idTDL=1;
     }
 }
