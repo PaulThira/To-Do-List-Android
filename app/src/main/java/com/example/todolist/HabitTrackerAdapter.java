@@ -24,7 +24,7 @@ public class HabitTrackerAdapter extends RecyclerView.Adapter<HabitTrackerViewHo
     @Override
     public void onBindViewHolder(@NonNull HabitTrackerViewHolder holder, int position) {
         String item = HabitTrackers.get(position);
-        holder.textView.setText(item);
+        holder.habitTracker.setText(item);
     }
 
     @Override

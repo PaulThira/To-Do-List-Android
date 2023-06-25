@@ -21,5 +21,7 @@ public interface UserDAO {
     public List<User> getUsersByNameAndEmail(String names, String emails);
     @Query("Select * from users where name=:names ")
     public List<User> getUserByName(String names);
+    @Query("Select * from users where name=:names and password=:passwords")
+    public List<User> getUserByNameAndPassword(String names,String passwords);
 
 }

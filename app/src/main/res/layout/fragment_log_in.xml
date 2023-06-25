@@ -19,7 +19,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/NameLogIn"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginLeft="100dp"
@@ -29,7 +29,7 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/PasswordLogOut"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginLeft="100dp"

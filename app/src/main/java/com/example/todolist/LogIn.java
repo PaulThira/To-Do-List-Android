@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.room.Room;
 
+import com.example.todolist.RoomDatabase.DataBase;
 import com.example.todolist.RoomDatabase.UserDAO;
 import com.example.todolist.databinding.FragmentLogInBinding;
-import com.example.todolist.RoomDatabase.DataBase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,6 +82,30 @@ public class LogIn extends Fragment {
             @Override
             public void onClick(View view) {
 
+                boolean[] choice = {true};
+                Thread T=new Thread(new Runnable(){
+                        @Override
+                        public void run() {
+
+
+                            if (!userDao.getUserByNameAndPassword(binding.NameLogIn.getText().toString(), binding.PasswordLogOut.getText().toString()).isEmpty()) {
+                                userDao.getUserByNameAndPassword(binding.NameLogIn.getText().toString(), binding.PasswordLogOut.getText().toString()).get(0).loggedIn = true;
+                                choice[0]=false;
+                            }
+                        }
+                    });
+                T.start();
+                try {
+                    T.join();  // Wait for the thread to complete
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(choice[0]==false){
+                    NavHostFragment.findNavController(LogIn.this).navigate(R.id.action_LogIn_to_MainMenu);
+                }
+                else{
+                    NavHostFragment.findNavController(LogIn.this).navigate(R.id.action_LogIn_self);
+                }
 
 
 
