@@ -28,6 +28,7 @@ public class SignUp extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private DataBase Db;
     private UserDAO userDao;
+    private boolean choice;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -81,8 +82,7 @@ public class SignUp extends Fragment {
         binding.signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                 boolean[] choice = {true};
                 Thread T=new Thread(new Runnable(){
                     @Override
                    public void run(){
@@ -91,13 +91,34 @@ public class SignUp extends Fragment {
                         U.name=binding.editTextTextPersonName.getText().toString();
                         U.email=binding.editTextTextEmailAddress.getText().toString();
                         U.password=binding.editTextTextPassword.getText().toString();
-                        U.loggedIn=true;
-                        userDao.insert(U);
+                        if(userDao.getUsersByNameAndEmail(U.name,U.email).isEmpty()){
+                            U.loggedIn=true;
+                            userDao.insert(U);
+                            choice[0] =true;
+
+                        }
+                        else{
+
+                            choice[0]=false;
+
+                        }
+
                     }
                 });
 
+
                 T.start();
-                NavHostFragment.findNavController(SignUp.this).navigate(R.id.action_SignUp_to_MainMenu);
+                try {
+                    T.join();  // Wait for the thread to complete
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(choice[0]==true){
+                    NavHostFragment.findNavController(SignUp.this).navigate(R.id.action_SignUp_to_MainMenu);
+                }
+                else{
+                    NavHostFragment.findNavController(SignUp.this).navigate(R.id.action_SignUp_self);
+                }
 
 
 

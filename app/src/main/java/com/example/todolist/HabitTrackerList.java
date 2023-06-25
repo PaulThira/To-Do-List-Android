@@ -5,21 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.room.Room;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.todolist.RoomDatabase.UserDAO;
-import com.example.todolist.databinding.FragmentLogInBinding;
-import com.example.todolist.RoomDatabase.DataBase;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LogIn#newInstance} factory method to
+ * Use the {@link HabitTrackerList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LogIn extends Fragment {
+public class HabitTrackerList extends Fragment {
+    private RecyclerView HabitTrackerRecyclerView;
+    private HabitTrackerAdapter habitTrackerAdapter;
+    private List<String> names;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,11 +30,8 @@ public class LogIn extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private FragmentLogInBinding binding;
-    private DataBase Db;
-    private UserDAO userDao;
 
-    public LogIn() {
+    public HabitTrackerList() {
         // Required empty public constructor
     }
 
@@ -43,11 +41,11 @@ public class LogIn extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LogIn.
+     * @return A new instance of fragment HabitTrackerList.
      */
     // TODO: Rename and change types and number of parameters
-    public static LogIn newInstance(String param1, String param2) {
-        LogIn fragment = new LogIn();
+    public static HabitTrackerList newInstance(String param1, String param2) {
+        HabitTrackerList fragment = new HabitTrackerList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,32 +60,22 @@ public class LogIn extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        binding = FragmentLogInBinding.inflate(inflater, container, false);
-        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDB")
-                .build();
-        userDao= Db.userDAO();
-        return binding.getRoot();
+        View view=inflater.inflate(R.layout.fragment_habit_tracker_list, container, false);
+        HabitTrackerRecyclerView=view.findViewById(R.id.HabitTrackerList);
+        HabitTrackerRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        names=new ArrayList<String>();
+        names.add("Work");
+        names.add("Gym");
+        names.add("Personal");
+        habitTrackerAdapter=new HabitTrackerAdapter(names);
+        HabitTrackerRecyclerView.setAdapter(habitTrackerAdapter);
         // Inflate the layout for this fragment
-    }
-    @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binding.login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-
-            }
-        });
-
-
+        return view;
     }
 }

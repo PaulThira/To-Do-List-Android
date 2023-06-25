@@ -37,6 +37,7 @@ public class User {
         email="thing@gmail.com";
         password="password";
         loggedIn=true;
+
     }
 
 

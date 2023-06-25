@@ -6,15 +6,27 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="240dp"
+        android:id="@+id/Tdl"
+        android:layout_width="242dp"
         android:layout_height="80dp"
         android:layout_marginStart="91dp"
         android:layout_marginTop="41dp"
 
         android:backgroundTint="#79CC76"
 
-        android:text="To Do List"
+        android:text="Thing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textH"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="18dp"
+        android:text="TextHabits"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tdl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

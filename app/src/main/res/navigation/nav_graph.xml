@@ -26,9 +26,10 @@
         tools:layout="@layout/fragment_main_menu">
 
 
+
         <action
-            android:id="@+id/action_MainMenu_to_Habits"
-            app:destination="@id/Habits" />
+            android:id="@+id/action_MainMenu_to_HabitTrackers"
+            app:destination="@id/HabitTrackers" />
     </fragment>
     <fragment
         android:id="@+id/LogIn"
@@ -38,6 +39,9 @@
         <action
             android:id="@+id/action_LogIn_to_MainMenu"
             app:destination="@id/MainMenu" />
+        <action
+            android:id="@+id/action_LogIn_self"
+            app:destination="@id/LogIn" />
     </fragment>
     <fragment
         android:id="@+id/SignUp"
@@ -61,5 +65,17 @@
 
 
 
+
+    </fragment>
+    <fragment
+        android:id="@+id/HabitTrackers"
+        android:name="com.example.todolist.HabitTrackerList"
+        android:label="HabitTrackerList"
+        tools:layout="@layout/fragment_habit_tracker_list">
+
+
+        <action
+            android:id="@+id/action_HabitTrackers_to_Habits"
+            app:destination="@id/Habits" />
     </fragment>
 </navigation>

@@ -19,5 +19,7 @@ public interface UserDAO {
     public List<User> getUsers();
     @Query("Select * from users where name=:names and email=:emails")
     public List<User> getUsersByNameAndEmail(String names, String emails);
+    @Query("Select * from users where name=:names ")
+    public List<User> getUserByName(String names);
 
 }
