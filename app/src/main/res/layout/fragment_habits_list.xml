@@ -2,28 +2,49 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0dp"
     tools:context=".HabitsList">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+    <EditText
+        android:id="@+id/DueDate"
+        android:layout_width="229dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="90dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="12/02/2023" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="538dp"
+        android:layout_marginTop="215dp"
         android:orientation="vertical" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="600dp"
-        android:text="+"
+        android:id="@+id/addHabit"
+        android:layout_width="137dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
+        android:text="add"
         android:textAlignment="center"
-        android:textSize="60sp" />
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/taskName"
+        android:layout_width="229dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+
 
 </FrameLayout>

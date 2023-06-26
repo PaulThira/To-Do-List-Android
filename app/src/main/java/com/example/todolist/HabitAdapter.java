@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -14,6 +13,11 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitViewHolder> {
     private List<String> items;
     private List<String> dates;
     private List<Boolean> doneItems;
+    public void update(List<String> items, List<String> dates, List<Boolean> doneItems){
+        this.dates=dates;
+        this.items=items;
+        this.doneItems=doneItems;
+    }
     public HabitAdapter(List<String> Items,List<String> Dates,List<Boolean> DoneItems) {
         this.dates=Dates;
         this.items=Items;

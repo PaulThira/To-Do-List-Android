@@ -1,14 +1,20 @@
 package com.example.todolist;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
+import com.example.todolist.RoomDatabase.DataBase;
+import com.example.todolist.RoomDatabase.HabitDAO;
+import com.example.todolist.databinding.FragmentHabitsListBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +27,12 @@ import java.util.List;
 public class HabitsList extends Fragment {
     private RecyclerView recyclerView;
     private HabitAdapter adapter;
+    private FragmentHabitsListBinding binding;
+    private List<String> dates = new ArrayList<String>();
+    private List<String> items=new ArrayList<String>();
+   private List<Boolean> doneItems=new ArrayList<Boolean>();
+   private DataBase Db;
+   private HabitDAO habitDAO;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,6 +74,7 @@ public class HabitsList extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,10 +83,10 @@ public class HabitsList extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDB")
+                .build();
+        habitDAO=Db.habitDAO();
 
-        List<String> dates = new ArrayList<String>();
-        List<String> items=new ArrayList<String>();
-        List<Boolean> doneItems=new ArrayList<Boolean>();
         dates.add("01/02/02");
         System.out.println("item added");
         dates.add("03/08/21");
@@ -93,9 +106,43 @@ public class HabitsList extends Fragment {
         doneItems.add(true);
         System.out.println("item added");
 
+
+        binding = FragmentHabitsListBinding.inflate(inflater, container, false);
+
+
+        view.findViewById(R.id.addHabit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddItems();
+            }
+        });
+
+
+
         adapter = new HabitAdapter(items,dates,doneItems);
         recyclerView.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
         return view;
+
+    }
+    public void AddItems( ){
+        Boolean b=false;
+        String name=binding.taskName.getText().toString();
+        String dueDate=binding.DueDate.getText().toString();
+        if(!name.isEmpty()&&!dueDate.isEmpty()){
+            dates.add(dueDate);
+            items.add(name);
+            doneItems.add(b);
+            adapter.notifyDataSetChanged();
+            adapter.notifyItemInserted(items.size() - 1);
+            Log.println(Log.INFO,"recycler","Function done");
+            System.out.println("Function Done");
+
+        }
+    }
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 }
