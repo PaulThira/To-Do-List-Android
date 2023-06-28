@@ -70,7 +70,7 @@ public class LogIn extends Fragment {
 
         binding = FragmentLogInBinding.inflate(inflater, container, false);
 
-        Db=Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListDb").build();
+        Db=Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListdb").build();
         userDao= Db.userDAO();
         return binding.getRoot();
         // Inflate the layout for this fragment

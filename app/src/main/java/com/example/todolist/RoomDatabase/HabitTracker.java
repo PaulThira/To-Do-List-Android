@@ -1,13 +1,10 @@
 package com.example.todolist.RoomDatabase;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "habit tracker",foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "id",
-        childColumns = "idUser"
-      ))
+@Entity(tableName = "habit tracker")
 public class HabitTracker {
     @PrimaryKey
     public int id;

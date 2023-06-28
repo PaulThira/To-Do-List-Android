@@ -85,7 +85,7 @@ public class HabitsList extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDb")
+        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListdb")
                 .build();
         taskDAO= Db.taskDAO();
         Task t=new Task();

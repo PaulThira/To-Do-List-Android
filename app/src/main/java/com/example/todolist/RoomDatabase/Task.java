@@ -14,12 +14,15 @@ public class Task {
     public boolean status;
     @ColumnInfo(name="dueDate")
     public String dueDate;
+    @ColumnInfo(name = "idTDL")
+    public int idTDL;
 
     public Task(){
         id=1;
         name="item";
         status=true;
         dueDate="10/12/2023";
+        idTDL=1;
 
     }
 }

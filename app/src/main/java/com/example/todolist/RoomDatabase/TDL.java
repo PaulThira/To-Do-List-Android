@@ -1,13 +1,10 @@
 package com.example.todolist.RoomDatabase;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "TDL",foreignKeys = @ForeignKey(entity = User.class,
-        parentColumns = "id",
-        childColumns = "idUser",
-        onDelete = ForeignKey.CASCADE))
+@Entity(tableName = "TDL")
 public class TDL {
 
     @PrimaryKey

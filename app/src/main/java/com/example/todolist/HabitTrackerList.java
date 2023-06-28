@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -73,6 +74,16 @@ public class HabitTrackerList extends Fragment {
         names.add("Work");
         names.add("Gym");
         names.add("Personal");
+        TextView textView=view.findViewById(R.id.HabitTrackerName);
+        view.findViewById(R.id.addHabitTracker).setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                String name=textView.getText().toString();
+                names.add(name);
+                habitTrackerAdapter.notifyDataSetChanged();
+            }
+        });
         habitTrackerAdapter=new HabitTrackerAdapter(names);
         HabitTrackerRecyclerView.setAdapter(habitTrackerAdapter);
         // Inflate the layout for this fragment
