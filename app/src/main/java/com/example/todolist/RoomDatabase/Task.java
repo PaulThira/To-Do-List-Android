@@ -2,13 +2,9 @@ package com.example.todolist.RoomDatabase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tasks", foreignKeys = @ForeignKey(entity = TDL.class,
-        parentColumns = "id",
-        childColumns = "idTDL"
-        ))
+@Entity(tableName = "tasks")
 public class Task {
     @PrimaryKey
     public int id;
@@ -18,13 +14,12 @@ public class Task {
     public boolean status;
     @ColumnInfo(name="dueDate")
     public String dueDate;
-    @ColumnInfo(name="idTDL")
-    public int idTDL;
+
     public Task(){
         id=1;
         name="item";
         status=true;
         dueDate="10/12/2023";
-        idTDL=1;
+
     }
 }

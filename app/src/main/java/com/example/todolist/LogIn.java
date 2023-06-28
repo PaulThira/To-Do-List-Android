@@ -69,8 +69,8 @@ public class LogIn extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentLogInBinding.inflate(inflater, container, false);
-        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDB")
-                .build();
+
+        Db=Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListDb").build();
         userDao= Db.userDAO();
         return binding.getRoot();
         // Inflate the layout for this fragment

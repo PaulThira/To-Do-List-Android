@@ -85,16 +85,25 @@ public class HabitsList extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDB")
+        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDb")
                 .build();
         taskDAO= Db.taskDAO();
+        Task t=new Task();
+        new Thread(()-> {
+            List<Task> tasks=taskDAO.getAllTasks();
+            for(int i=0;i<tasks.size();i++){
+                items.add(tasks.get(i).name);
+                doneItems.add(tasks.get(i).status);
+                dates.add(tasks.get(i).dueDate);
+            }
+            getActivity().runOnUiThread(() -> {
+                // Notify the RecyclerView of the data change
+                adapter.notifyDataSetChanged();
+            });
 
-        for(int i=0;i<3;i++){
-            items.add("Names");
-            doneItems.add(true);
-            dates.add("12/11/21");
 
-        }
+
+        }).start();
 
 
 
@@ -116,16 +125,17 @@ public class HabitsList extends Fragment {
                     doneItems.add(b);
                     adapter.notifyDataSetChanged();
                     adapter.notifyItemInserted(items.size() - 1);
-                    Task T=new Task();
-                    T.id=items.size();
-                            T.status=false;
-                            T.name=name;
-                            T.dueDate=dueDate;
+
                     new Thread(()-> {
+                        Task T=new Task();
+                        T.id=taskDAO.getAllTasks().size()+1;
+                        T.status=false;
+                        T.name=name;
+                        T.dueDate=dueDate;
+
+                        taskDAO.insert(T);
 
 
-
-                            taskDAO.insert(T);
 
 
                     }).start();
