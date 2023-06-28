@@ -1,5 +1,6 @@
 package com.example.todolist;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,4 +77,11 @@ public class MainMenu extends Fragment {
                         .navigate(R.id.action_MainMenu_to_HabitTrackers);
             }
         });
+        binding.dates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.dates.setBackgroundColor(Color.green(90));
+            }
+        });
+
 }}
