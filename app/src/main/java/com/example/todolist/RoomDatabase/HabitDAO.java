@@ -17,4 +17,7 @@ public interface HabitDAO {
     public void update(Habit habit);
     @Query("Select* from habits")
     public List<Habit> getHabits();
+    @Query("Select name from habits")
+    public List<String> getHabitNames();
+
 }

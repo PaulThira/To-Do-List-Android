@@ -17,4 +17,10 @@ public interface TaskDAO {
     public void delete(Task task);
     @Query("Select * from tasks")
     public List<Task> getAllTasks();
+    @Query("Select name from tasks")
+    public List<String> getAllTaskNames();
+    @Query("Select dueDate from tasks")
+    public List<String> getAllTaskDueDates();
+    @Query("Select Status from tasks")
+    public List<Boolean> getAllTaskStatuses();
 }

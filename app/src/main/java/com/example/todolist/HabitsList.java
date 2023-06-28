@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.todolist.RoomDatabase.DataBase;
-import com.example.todolist.RoomDatabase.HabitDAO;
+import com.example.todolist.RoomDatabase.Task;
+import com.example.todolist.RoomDatabase.TaskDAO;
 import com.example.todolist.databinding.FragmentHabitsListBinding;
 
 import java.util.ArrayList;
@@ -28,11 +30,11 @@ public class HabitsList extends Fragment {
     private RecyclerView recyclerView;
     private HabitAdapter adapter;
     private FragmentHabitsListBinding binding;
-    private List<String> dates = new ArrayList<String>();
-    private List<String> items=new ArrayList<String>();
+   private List<String > items=new ArrayList<String>();
+   private List<String> dates=new ArrayList<String>();
    private List<Boolean> doneItems=new ArrayList<Boolean>();
    private DataBase Db;
-   private HabitDAO habitDAO;
+   private TaskDAO taskDAO;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,35 +87,58 @@ public class HabitsList extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDB")
                 .build();
-        habitDAO=Db.habitDAO();
+        taskDAO= Db.taskDAO();
 
-        dates.add("01/02/02");
-        System.out.println("item added");
-        dates.add("03/08/21");
-        System.out.println("item added");
-        dates.add("05/12/22");
-        System.out.println("item added");
-        items.add("Item 1");
-        System.out.println("item added");
-        items.add("Item 2");
-        System.out.println("item added");
-        items.add("Item 3");
-        System.out.println("item added");
-        doneItems.add(true);
-        System.out.println("item added");
-        doneItems.add(false);
-        System.out.println("item added");
-        doneItems.add(true);
-        System.out.println("item added");
+        for(int i=0;i<3;i++){
+            items.add("Names");
+            doneItems.add(true);
+            dates.add("12/11/21");
+
+        }
+
+
+
 
 
         binding = FragmentHabitsListBinding.inflate(inflater, container, false);
 
-
+        EditText names=view.findViewById(R.id.taskName);
+        EditText date=view.findViewById(R.id.DueDate);
         view.findViewById(R.id.addHabit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddItems();
+                Boolean b=false;
+                String name=names.getText().toString();
+                String dueDate=date.getText().toString();
+                if(!name.isEmpty()&&!dueDate.isEmpty()){
+                    items.add(name);
+                    dates.add(dueDate);
+                    doneItems.add(b);
+                    adapter.notifyDataSetChanged();
+                    adapter.notifyItemInserted(items.size() - 1);
+                    Task T=new Task();
+                    T.id=items.size();
+                            T.status=false;
+                            T.name=name;
+                            T.dueDate=dueDate;
+                    new Thread(()-> {
+
+
+
+                            taskDAO.insert(T);
+
+
+                    }).start();
+
+
+
+
+
+                    Log.println(Log.INFO,"recycler","Function done");
+                    System.out.println("Function Done");
+
+
+                }
             }
         });
 
@@ -126,19 +151,7 @@ public class HabitsList extends Fragment {
 
     }
     public void AddItems( ){
-        Boolean b=false;
-        String name=binding.taskName.getText().toString();
-        String dueDate=binding.DueDate.getText().toString();
-        if(!name.isEmpty()&&!dueDate.isEmpty()){
-            dates.add(dueDate);
-            items.add(name);
-            doneItems.add(b);
-            adapter.notifyDataSetChanged();
-            adapter.notifyItemInserted(items.size() - 1);
-            Log.println(Log.INFO,"recycler","Function done");
-            System.out.println("Function Done");
 
-        }
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

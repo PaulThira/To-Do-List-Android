@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HabitAdapter extends RecyclerView.Adapter<HabitViewHolder> {
     private List<String> items;
     private List<String> dates;
     private List<Boolean> doneItems;
-    public void update(List<String> items, List<String> dates, List<Boolean> doneItems){
+    public void update(ArrayList<String> items, ArrayList<String> dates, ArrayList<Boolean> doneItems){
         this.dates=dates;
         this.items=items;
         this.doneItems=doneItems;
