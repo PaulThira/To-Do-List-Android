@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#BD81E3" /> <!-- Replace with your desired pressed color -->
+    <corners android:radius="18dp" /> <!-- Optional: Customize corner radius if needed -->
+</shape>

@@ -21,7 +21,8 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Name"
+        android:textColor="@drawable/selector"/>
 
     <Button
         android:id="@+id/addTDL"
@@ -32,6 +33,13 @@
         android:ems="10"
 
         android:text="Add" />
+
+    <Button
+        android:id="@+id/GetItems"
+        android:layout_width="67dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        android:text="Get" />
 
 
 </FrameLayout>
