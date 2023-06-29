@@ -14,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.todolist.RoomDatabase.DataBase;
+import com.example.todolist.RoomDatabase.TDL;
+import com.example.todolist.RoomDatabase.TDLDAO;
 import com.example.todolist.RoomDatabase.Task;
 import com.example.todolist.RoomDatabase.TaskDAO;
+import com.example.todolist.RoomDatabase.User;
+import com.example.todolist.RoomDatabase.UserDAO;
 import com.example.todolist.databinding.FragmentHabitsListBinding;
 
 import java.util.ArrayList;
@@ -35,6 +39,8 @@ public class HabitsList extends Fragment {
    private List<Boolean> doneItems=new ArrayList<Boolean>();
    private DataBase Db;
    private TaskDAO taskDAO;
+   private UserDAO userDAO;
+   private TDLDAO tdldao;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,9 +91,24 @@ public class HabitsList extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListdb")
+        Db = Room.databaseBuilder(requireContext().getApplicationContext(), DataBase.class, "ToDoListDbs")
                 .build();
         taskDAO= Db.taskDAO();
+        tdldao=Db.tdldao();
+        userDAO=Db.userDAO();
+        final int[] IdUser = {0};
+        int IdTDL=0;
+        final User[] loggedIn = new User[1];
+        final TDL[] inUse = new TDL[1];
+        new Thread(()-> {
+
+
+
+
+
+
+
+        }).start();
         Task t=new Task();
         new Thread(()-> {
             List<Task> tasks=taskDAO.getAllTasks();
@@ -132,6 +153,8 @@ public class HabitsList extends Fragment {
                         T.status=false;
                         T.name=name;
                         T.dueDate=dueDate;
+                        T.idTDL=1;
+
 
                         taskDAO.insert(T);
 

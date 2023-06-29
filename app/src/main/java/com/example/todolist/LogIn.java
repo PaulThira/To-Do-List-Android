@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.room.Room;
 
 import com.example.todolist.RoomDatabase.DataBase;
+import com.example.todolist.RoomDatabase.User;
 import com.example.todolist.RoomDatabase.UserDAO;
 import com.example.todolist.databinding.FragmentLogInBinding;
 
@@ -70,7 +71,7 @@ public class LogIn extends Fragment {
 
         binding = FragmentLogInBinding.inflate(inflater, container, false);
 
-        Db=Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListdb").build();
+        Db=Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListDbs").build();
         userDao= Db.userDAO();
         return binding.getRoot();
         // Inflate the layout for this fragment
@@ -89,8 +90,10 @@ public class LogIn extends Fragment {
 
 
                             if (!userDao.getUserByNameAndPassword(binding.NameLogIn.getText().toString(), binding.PasswordLogOut.getText().toString()).isEmpty()) {
-                                userDao.getUserByNameAndPassword(binding.NameLogIn.getText().toString(), binding.PasswordLogOut.getText().toString()).get(0).loggedIn = true;
-                                choice[0]=false;
+                               User u= userDao.getUserByNameAndPassword(binding.NameLogIn.getText().toString(), binding.PasswordLogOut.getText().toString()).get(0);
+                               u.loggedIn=true;
+                               userDao.update(u);
+                               choice[0]=false;
                             }
                         }
                     });

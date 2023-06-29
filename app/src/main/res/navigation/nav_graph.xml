@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_MainMenu_to_HabitTrackers"
             app:destination="@id/HabitTrackers" />
+        <action
+            android:id="@+id/action_MainMenu_to_TdlList"
+            app:destination="@id/TdlList" />
     </fragment>
     <fragment
         android:id="@+id/LogIn"
@@ -77,5 +80,14 @@
         <action
             android:id="@+id/action_HabitTrackers_to_Habits"
             app:destination="@id/Habits" />
+    </fragment>
+    <fragment
+        android:id="@+id/TdlList"
+        android:name="com.example.todolist.TDLList"
+        android:label="Tdls"
+        tools:layout="@layout/fragment_t_d_l_list">
+
+
+
     </fragment>
 </navigation>

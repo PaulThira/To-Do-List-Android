@@ -13,11 +13,14 @@ public class TDL {
     public String name;
     @ColumnInfo(name = "idUser")
     public int idUser;
+    @ColumnInfo(name = "inUse")
+    public boolean inUse;
 
     public TDL(){
         id=1;
         name="things";
         idUser=1;
+        inUse=false;
 
     }
 }

@@ -12,10 +12,13 @@ public class HabitTracker {
     public String name;
     @ColumnInfo(name = "idUser")
     public int idUser;
+    @ColumnInfo(name = "inUse")
+    public boolean inUse;
     public HabitTracker(){
         id=1;
         name="tracker";
         idUser=1;
+        inUse=false;
 
     }
 }

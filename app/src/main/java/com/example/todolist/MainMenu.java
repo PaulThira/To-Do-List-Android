@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.room.Room;
 
+import com.example.todolist.RoomDatabase.DataBase;
+import com.example.todolist.RoomDatabase.UserDAO;
 import com.example.todolist.databinding.FragmentMainMenuBinding;
 
 /**
@@ -19,6 +22,8 @@ import com.example.todolist.databinding.FragmentMainMenuBinding;
  */
 public class MainMenu extends Fragment {
     private FragmentMainMenuBinding binding;
+    private DataBase Db;
+    private UserDAO userDao;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -70,11 +75,21 @@ public class MainMenu extends Fragment {
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Db= Room.databaseBuilder(requireContext().getApplicationContext(),DataBase.class,"ToDoListDbs").build();
+        userDao= Db.userDAO();
+
         binding.habits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(MainMenu.this)
                         .navigate(R.id.action_MainMenu_to_HabitTrackers);
+            }
+        });
+        binding.tasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainMenu.this)
+                        .navigate(R.id.action_MainMenu_to_TdlList);
             }
         });
         binding.dates.setOnClickListener(new View.OnClickListener() {
