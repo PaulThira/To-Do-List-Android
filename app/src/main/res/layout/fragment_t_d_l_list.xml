@@ -22,7 +22,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        android:textColor="@drawable/selector"/>
+        android:textColor="@color/color_selector"/>
 
     <Button
         android:id="@+id/addTDL"
